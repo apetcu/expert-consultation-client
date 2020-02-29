@@ -8,4 +8,4 @@
     </div>
   </div>
 </div>
-<app-loading *ngIf="!(documentInfo$ | async)"></app-loading>
+<app-loading *ngIf="!(documentInfo$ | async).consolidated"></app-loading>
