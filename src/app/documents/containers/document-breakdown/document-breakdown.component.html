@@ -1,1 +1,10 @@
-<p>document-breakdown works!</p>
+<div *ngIf="(documentInfo$ | async) as documentInfo">
+  <div class="sidenav">
+    <ul>
+      <li><a href="#">Test</a></li>
+    </ul>
+  </div>
+  <div class="document-contents">
+    <app-document-paragraph [documentNode]="documentInfo.consolidated.documentNode"></app-document-paragraph>
+  </div>
+</div>

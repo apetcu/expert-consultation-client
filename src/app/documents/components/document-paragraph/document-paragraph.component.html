@@ -1,0 +1,3 @@
+<h4>{{documentNode.title}}</h4>
+<p>{{documentNode.content}}</p>
+<app-document-paragraph *ngFor="let childNode of documentNode.children" [documentNode]="childNode"></app-document-paragraph>

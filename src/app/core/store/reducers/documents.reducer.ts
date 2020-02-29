@@ -25,6 +25,7 @@ export function reducer(state = initialState, action: fromDocuments.DocumentsAct
         ...state,
         loading: true,
       };
+
     case fromDocuments.DocumentsActionTypes.LoadDocumentsSuccess: {
       const documentsPage = action.payload;
       const documents = documentsPage.content;
@@ -42,6 +43,24 @@ export function reducer(state = initialState, action: fromDocuments.DocumentsAct
         loading: false,
         loaded: true,
         pageData: pageData.toJson(),
+        entities,
+      };
+    }
+
+    case fromDocuments.DocumentsActionTypes.LoadConsolidatedDocumentByIdSuccess: {
+      console.log(action.payload);
+      const theDocument: DocumentConsolidate = action.payload;
+      const entities = {
+        ...state.entities,
+        [theDocument.id]: {
+          ...state.entities[theDocument.id], consolidated: theDocument
+        },
+      };
+
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
         entities,
       };
     }

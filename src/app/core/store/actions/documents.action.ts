@@ -3,11 +3,34 @@ import { IDocumentMetadata, DocumentConsolidate, Page, DocumentMetadata } from '
 
 export enum DocumentsActionTypes {
   LoadDocuments = '[Documents] Load Documents',
+  LoadConsolidatedDocumentById = '[Documents] Load Consolidated Document by ID',
+  LoadConsolidatedDocumentByIdSuccess = '[Documents] Load Consolidated Document by ID Success',
+  LoadConsolidatedDocumentByIdFail = '[Documents] Load Consolidated Document by ID FAIL',
   LoadDocumentsSuccess = '[Documents] Load Documents Success',
   LoadDocumentsFail = '[Documents] Load Documents Fail',
   SaveDocument = '[Documents] Save Documents',
   SaveDocumentSuccess = '[Documents] Save Documents Success',
   SaveDocumentFail = '[Documents] Save Documents Fail'
+}
+
+export class LoadConsolidatedDocumentById implements Action {
+  readonly type = DocumentsActionTypes.LoadConsolidatedDocumentById;
+  constructor(public payload: string) {
+  }
+}
+
+export class LoadConsolidatedDocumentByIdSuccess implements Action {
+  readonly type = DocumentsActionTypes.LoadConsolidatedDocumentByIdSuccess;
+
+  constructor(public payload: DocumentConsolidate) {
+  }
+}
+
+export class LoadConsolidatedDocumentByIdFail implements Action {
+  readonly type = DocumentsActionTypes.LoadConsolidatedDocumentByIdFail;
+
+  constructor(public payload: DocumentConsolidate) {
+  }
 }
 
 export class LoadDocuments implements Action {
@@ -49,6 +72,9 @@ export class SaveDocumentFail implements Action {
 export type DocumentsAction =
     | LoadDocuments
     | LoadDocumentsFail
+    | LoadConsolidatedDocumentById
+    | LoadConsolidatedDocumentByIdSuccess
+    | LoadConsolidatedDocumentByIdFail
     | LoadDocumentsSuccess
     | SaveDocument
     | SaveDocumentSuccess

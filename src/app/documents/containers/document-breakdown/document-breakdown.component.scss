@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.sidenav {
+  position:fixed;
+  left: 90px;
+  top: 80px;
+  background: #ccc;
+  width: 18%;
+  float: left;
+  padding: 20px;
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.document-contents {
+  width: 80%;
+  padding: 20px;
+  float: right;
+}

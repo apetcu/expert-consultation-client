@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as documentsActions from '../actions';
 import { catchError, concatMap, map, switchMap } from 'rxjs/operators';
 import { DocumentsService } from '../../services';
-import { Error, Page } from '@app/core';
+import { Error, IDocumentConsolidate, Page } from '@app/core';
 import { of } from 'rxjs';
 import { DocumentConsolidate, DocumentMetadata } from '../../models/';
 import { CoreState } from '@app/core/store';
@@ -19,6 +19,17 @@ export class DocumentsEffect {
           .pipe(
               map((documentsPage: Page<DocumentMetadata>) => new documentsActions.LoadDocumentsSuccess(documentsPage)),
               catchError(error => of(new documentsActions.LoadDocumentsFail(error)))
+          )
+      ));
+
+  @Effect()
+  loadConsolidatedDocument$ = this.actions$.pipe(
+      ofType(documentsActions.DocumentsActionTypes.LoadConsolidatedDocumentById),
+      map((action: documentsActions.LoadConsolidatedDocumentById) => action.payload),
+      switchMap((entry) => this.documentsService.getConsolidated(entry)
+          .pipe(
+              map((documentsPage: DocumentConsolidate) => new documentsActions.LoadConsolidatedDocumentByIdSuccess(documentsPage)),
+              catchError(error => of(new documentsActions.LoadConsolidatedDocumentByIdFail(error)))
           )
       ));
 

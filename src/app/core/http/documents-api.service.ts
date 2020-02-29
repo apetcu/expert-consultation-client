@@ -11,7 +11,7 @@ export class DocumentsApiService {
   }
 
   private get url() {
-    return `${environment.api_url}/document`;
+    return `${environment.api_url}/documents`;
   }
 
   public list(): Observable<Page<IDocumentMetadata>> {
@@ -20,6 +20,11 @@ export class DocumentsApiService {
 
   public get(documentId: string): Observable<IDocumentConsolidate> {
     return this.http.get<IDocumentConsolidate>(`${this.url}/${documentId}`);
+  }
+
+
+  public getConsolidated(documentId: string): Observable<IDocumentConsolidate> {
+    return this.http.get<IDocumentConsolidate>(`${this.url}/${documentId}/consolidated`);
   }
 
   public post(documentMetadata: IDocumentMetadata) {

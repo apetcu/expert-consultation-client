@@ -8,16 +8,20 @@ import * as fromComponents from './components';
 import * as fromContainer from './containers';
 import * as fromGuards from './guards';
 import { CommonModule } from '@angular/common';
+import { DocumentParagraphComponent } from './components/document-paragraph/document-paragraph.component';
+import { MatGridListModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     DocumentsRoutingModule,
+    MatGridListModule,
   ],
   declarations: [
     ...fromContainer.components,
     ...fromComponents.components,
+    DocumentParagraphComponent,
   ],
   providers: [
     ...fromGuards.guards,

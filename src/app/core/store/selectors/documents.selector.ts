@@ -32,3 +32,13 @@ export const getDocuments = createSelector(getDocumentsEntities,
 );
 export const getDocumentsLoaded = createSelector(getDocumentsState, fromDocuments.getDocumentsLoaded);
 export const getDocumentsLoading = createSelector(getDocumentsState, fromDocuments.getDocumentsLoading);
+
+export const getDocumentById = (documentId: string) => createSelector(
+    getDocumentsEntities,
+    (entities) => entities[documentId] || undefined
+);
+
+export const hasConsolidatedInformation = (documentId: string) => createSelector(
+    getDocumentById(documentId),
+    (document: DocumentMetadata) => document ? document.hasConsolidatedInformation() : false
+);

@@ -1,4 +1,5 @@
 import { DocumentType } from './document-type.enum';
+import { DocumentConsolidate, IDocumentConsolidate } from '@app/core';
 
 export interface IDocumentMetadata {
   id: string;
@@ -9,6 +10,7 @@ export interface IDocumentMetadata {
   dateOfDevelopment: Date;
   dateOfReceipt: Date;
   filePath: string;
+  consolidated?: IDocumentConsolidate;
 }
 
 export class DocumentMetadata {
@@ -20,6 +22,7 @@ export class DocumentMetadata {
   dateOfDevelopment: Date;
   dateOfReceipt: Date;
   filePath: string;
+  consolidated?: DocumentConsolidate;
 
   constructor(data?: IDocumentMetadata) {
     if (data) {
@@ -36,6 +39,7 @@ export class DocumentMetadata {
     this.dateOfDevelopment = new Date(data.dateOfDevelopment);
     this.dateOfReceipt = new Date(data.dateOfReceipt);
     this.filePath = data.filePath;
+    this.consolidated = data.consolidated ? new DocumentConsolidate(data.consolidated) : null;
   }
 
   toJson(): IDocumentMetadata {
@@ -57,5 +61,9 @@ export class DocumentMetadata {
 
   toFormData(): any {
     return this.toJson();
+  }
+
+  hasConsolidatedInformation(): boolean {
+    return this.consolidated !== null;
   }
 }

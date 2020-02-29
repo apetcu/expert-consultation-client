@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'mixins.scss';
+
+.row {
+  @include flex-row();
+}
+
+.column {
+  @include flex-column;
+  flex: 1;
+  margin: 1%;
+}

@@ -33,6 +33,12 @@
     background-color: $legal-consult-table-accent;
   }
 
+
+  .mat-row:hover {
+    background-color: #f3f1f2;
+    cursor: pointer;
+  }
+
   .mat-table {
     overflow-y: auto;
     flex: 1 1 auto;
