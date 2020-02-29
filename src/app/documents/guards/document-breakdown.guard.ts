@@ -14,18 +14,17 @@ export class DocumentBreakdownGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const theDocumentId = (route.params as any).documentId;
 
-    return this.hasDetailedAsset(theDocumentId)
+    return this.hasConsolidatedDetails(theDocumentId)
         .pipe(
             switchMap(() => of(true)),
             catchError(() => of(false))
         );
   }
 
-  hasDetailedAsset(documentId: string): Observable<boolean> {
+  hasConsolidatedDetails(documentId: string): Observable<boolean> {
     return this.store.pipe(select(fromStore.hasConsolidatedInformation(documentId)))
         .pipe(
             tap((hasDetail: boolean) => {
-              console.log(hasDetail);
               if (!hasDetail) {
                 return this.store.dispatch(new fromStore.LoadConsolidatedDocumentById(documentId));
               }

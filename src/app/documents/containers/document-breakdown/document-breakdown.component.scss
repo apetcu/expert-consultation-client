@@ -3,19 +3,23 @@
 }
 
 .sidenav {
-  position:fixed;
-  left: 90px;
-  top: 80px;
-  background: #ccc;
+   position:fixed;
+   left: 90px;
+   top: 80px;
+  background: #E0E0E0;
   width: 18%;
   float: left;
   padding: 20px;
-  max-height: 60vh;
-  overflow-y: scroll;
+   max-height: 87vh;
+   overflow-y: scroll;
 }
 
 .document-contents {
   width: 80%;
   padding: 20px;
   float: right;
+
+  .paragraphs {
+    width: 70%;
+  }
 }

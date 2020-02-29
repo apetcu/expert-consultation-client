@@ -10,6 +10,7 @@ import * as fromGuards from './guards';
 import { CommonModule } from '@angular/common';
 import { DocumentParagraphComponent } from './components/document-paragraph/document-paragraph.component';
 import { MatGridListModule } from '@angular/material';
+import { DocumentSidenavComponent } from './components/document-sidenav/document-sidenav.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { MatGridListModule } from '@angular/material';
     ...fromContainer.components,
     ...fromComponents.components,
     DocumentParagraphComponent,
+    DocumentSidenavComponent,
   ],
   providers: [
     ...fromGuards.guards,

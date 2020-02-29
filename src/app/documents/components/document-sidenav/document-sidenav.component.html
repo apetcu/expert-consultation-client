@@ -1,0 +1,7 @@
+<a (click)="scrollIntoView(documentNode.id)">{{documentNode.title}}</a>
+<div class="children">
+  <div *ngFor="let childNode of documentNode.children">
+    <app-document-sidenav
+      [documentNode]="childNode" *ngIf="!childNode.isParagraph() && !childNode.isAlignment()"></app-document-sidenav>
+  </div>
+</div>

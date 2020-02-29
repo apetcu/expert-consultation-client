@@ -1,5 +1,5 @@
 import { DocumentType } from './document-type.enum';
-import { DocumentConsolidate, IDocumentConsolidate } from '@app/core';
+import { DocumentConsolidate, IDocumentConsolidate } from './document-consolidate.model';
 
 export interface IDocumentMetadata {
   id: string;

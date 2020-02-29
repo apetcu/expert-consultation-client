@@ -40,4 +40,12 @@ export class DocumentNode {
       children: this.children.map(value => value.toJson())
     };
   }
+
+  isParagraph(): boolean {
+    return this.documentNodeType === DocumentNodeType.PARAGRAPH;
+  }
+
+  isAlignment(): boolean {
+    return this.documentNodeType === DocumentNodeType.ALIGNMENT;
+  }
 }
